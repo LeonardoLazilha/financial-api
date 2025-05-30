@@ -1,0 +1,7 @@
+CREATE TABLE users (
+    id BIGINT IDENTITY(1,1) PRIMARY KEY,
+    nome varchar(255) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    admin BIT NOT NULL DEFAULT 0
+)

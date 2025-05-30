@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
-public record LancamentoRequestDTO(
+public record LancamentoUpdateDTO(
         @NotBlank(message = "A descrição é obrigatória")
         String descricao,
 

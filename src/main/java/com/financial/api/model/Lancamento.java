@@ -26,6 +26,10 @@ public class Lancamento {
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id")
+    private User user;
+
     public Lancamento (LancamentoRequestDTO dto){
         this.descricao = dto.descricao();
         this.valor = dto.valor();
