@@ -1,5 +1,6 @@
 package com.financial.api.model;
 
+import com.financial.api.dto.UserRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -22,5 +23,12 @@ public class User {
     private String senha;
 
     private Boolean admin = false;
+
+    public User(UserRequestDTO dto){
+        this.nome = dto.nome();
+        this.email = dto.email();
+        this.senha = dto.senha();
+        this.admin = dto.admin();
+    }
 
 }
