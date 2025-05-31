@@ -27,7 +27,7 @@ public class Lancamento {
     private Tipo tipo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Lancamento (LancamentoRequestDTO dto){
