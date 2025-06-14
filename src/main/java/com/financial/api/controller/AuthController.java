@@ -1,5 +1,6 @@
 package com.financial.api.controller;
 
+import com.financial.api.config.TokenDTO;
 import com.financial.api.config.TokenService;
 import com.financial.api.dto.LoginDTO;
 import com.financial.api.model.User;
@@ -27,12 +28,14 @@ public class AuthController {
     public ResponseEntity login (@RequestBody @Valid LoginDTO login){
 
         //-spring nao aceita receber meu dto, entao preciso jogar ele nessa classe
-        var token = new UsernamePasswordAuthenticationToken(login.email(), login.senha());
+        var authToken = new UsernamePasswordAuthenticationToken(login.email(), login.senha());
 
         //-representa o usuario autenticado no sistema
-        var authentication = manager.authenticate(token);
+        var authentication = manager.authenticate(authToken);
 
-        return ResponseEntity.ok(tokenService.gerarToken((User) authentication.getPrincipal()));
+        var tokenJWT = tokenService.gerarToken((User) authentication.getPrincipal());
+
+        return ResponseEntity.ok(new TokenDTO(tokenJWT));
     }
 
 }
